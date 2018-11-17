@@ -1,0 +1,39 @@
+@POST("service.php?op=add_or_edit_report")
+    @Multipart
+    Call<LoginResponse> postAddOrEditReportRequest(@PartMap HashMap<String, RequestBody> map);
+	
+	
+	
+	
+	
+	 HashMap<String, RequestBody> map = new HashMap<>();
+	 map.put("data", ApiClient.createRequestBody(imageType));
+     map.put("report_image_1\"; fileName=\"myFile.png\" ", ApiClient.createRequestBody(new File(image)));
+	 
+	 
+	 
+	 //Multiple
+	 @POST("service.php?op=add_or_edit_report")
+    @Multipart
+    Call<LoginResponse> postAddOrEditReportRequest(@Part MultipartBody.Part[] surveyImage, @PartMap HashMap<String, RequestBody> map);
+	
+	
+	  File file = new File(surveyModel.getPicturesList().get(index).getImagePath());
+            RequestBody surveyBody = RequestBody.create(MediaType.parse("image/*"), file);
+            surveyImagesParts[index] = MultipartBody.Part.createFormData("SurveyImage", file.getName(), surveyBody);
+	 
+	 
+	 
+	 
+	 
+	
+	 //ApiClient Ma Muki Deje
+	  public static RequestBody createRequestBody(@NonNull File file) {
+        return RequestBody.create(
+                MediaType.parse("image/*"), file);
+    }
+
+    public static RequestBody createRequestBody(@NonNull String string) {
+        return RequestBody.create(
+                MediaType.parse("text/plain"), string);
+    }
